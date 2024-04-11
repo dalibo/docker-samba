@@ -16,4 +16,3 @@ RUN apk add --update --no-cache \
 ADD retry /usr/local/bin/
 ADD entrypoint.sh /sbin
 ENTRYPOINT ["/sbin/tini", "--", "/sbin/entrypoint.sh", "/usr/sbin/samba", "--foreground", "--debug-stdout"]
-CMD ["--version"]
