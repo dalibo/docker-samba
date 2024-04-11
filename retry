@@ -1,0 +1,11 @@
+#!/bin/bash -eux
+
+for s in {0..10} ; do
+	if "$@" ; then
+		exit 0
+	else
+		sleep "$s"
+	fi
+done
+
+exec "$@"
