@@ -27,14 +27,19 @@ setup() {
 	mkdir -p /etc/samba/smb.conf.d/
 	touch /etc/samba/smb.conf
 	mv /etc/samba/smb.conf /etc/samba/smb.conf.d/00-default.conf
+	# acl_xattr options comes from https://lists.samba.org/archive/samba/2021-February/234326.html
 	samba-tool domain provision \
 		--use-rfc2307 \
-		--use-xattr=no \
 		--realm="$REALM" \
 		--domain="${DOMAIN-ad}" \
 		--server-role=dc \
 		--dns-backend="${DNS_BACKEND-SAMBA_INTERNAL}" \
 		--adminpass="$ADMIN_PASS" \
+		--option="vfs objects = dfs_samba4 posixacl nfs4acl_xattr acl_xattr" \
+		--option="nfs4acl_xattr:encoding = nfs" \
+		--option="nfs4acl_xattr:version = 41" \
+		--option="nfs4acl_xattr:default acl style = windows" \
+		--option="nfs4acl_xattr:xattr_name = user.nfs4_acl" \
 		;
 	mv /etc/samba/smb.conf /etc/samba/smb.conf.d/00-provision.conf
 	configure_samba
