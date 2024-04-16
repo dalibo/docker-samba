@@ -29,6 +29,7 @@ setup() {
 	mv /etc/samba/smb.conf /etc/samba/smb.conf.d/00-default.conf
 	samba-tool domain provision \
 		--use-rfc2307 \
+		--use-xattr=no \
 		--realm="$REALM" \
 		--domain="${DOMAIN-ad}" \
 		--server-role=dc \
