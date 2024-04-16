@@ -3,7 +3,7 @@ version: '3.8'
 
 services:
   directory:
-    image: dalibo/samba:4.18.9
+    image: dalibo/samba:latest
     build: .
     volumes:
       - ./entrypoint-init.d:/docker-entrypoint-init.d/
