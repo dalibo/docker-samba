@@ -24,9 +24,10 @@ main() {
 }
 
 setup() {
+	log "Provionning Samba"
 	mkdir -p /etc/samba/smb.conf.d/
 	touch /etc/samba/smb.conf
-	mv /etc/samba/smb.conf /etc/samba/smb.conf.d/00-default.conf
+	mv --no-clobber /etc/samba/smb.conf /etc/samba/smb.conf.d/00-default.conf
 	# acl_xattr options comes from https://lists.samba.org/archive/samba/2021-February/234326.html
 	samba-tool domain provision \
 		--use-rfc2307 \
