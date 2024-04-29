@@ -15,7 +15,7 @@ set -euo pipefail
 main() {
 	exec 0<&- # close stdin
 	samba --show-build
-	if ! [ -f /etc/samba/smb.conf.d ] ; then
+	if ! [ -d /etc/samba/smb.conf.d ] ; then
 		setup
 	fi
 	configure_samba
