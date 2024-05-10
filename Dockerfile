@@ -34,3 +34,4 @@ RUN set -ex; \
 ADD retry /usr/local/bin/
 ADD entrypoint.sh /sbin
 ENTRYPOINT ["/usr/bin/tini", "-s", "--", "/sbin/entrypoint.sh", "/usr/sbin/samba", "--foreground", "--debug-stdout"]
+EXPOSE 53 88 135 139 389 445 464 636
