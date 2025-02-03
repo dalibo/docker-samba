@@ -1,5 +1,4 @@
 FROM debian:bookworm
-MAINTAINER Dalibo Labs <contact@dalibo.com>
 VOLUME /etc/samba
 VOLUME /var/lib/samba
 
