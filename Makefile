@@ -1,4 +1,4 @@
 default:
 
 build:
-	docker build -t dalibo/samba-ad:local .
+	docker build -t dalibo/samba:local .
